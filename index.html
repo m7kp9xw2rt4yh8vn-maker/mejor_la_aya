@@ -405,6 +405,10 @@
             max-height: 150px;
             overflow-y: auto;
             word-break: break-word;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
 
         .wish-tree-container {
@@ -787,7 +791,7 @@
     </footer>
 
     <script>
-        // إعدادات Firebase الخاصة بك (تأكد من مطابقتها لمشروعك)
+        // إعدادات Firebase الخاصة بك
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
             authDomain: "YOUR_AUTH_DOMAIN",
@@ -952,21 +956,22 @@
             }
         }
 
-        // جلب التعليقات سحابياً من Firebase Firestore مع دعم التخزين المحلي كبديل
+        // جلب التعليقات من Firebase مع أ IDs الخاصة بها
         async function fetchCommentsFromFirebase() {
             try {
                 const snapshot = await db.collection('aya_comments').orderBy('createdAt', 'desc').get();
                 let comments = [];
                 snapshot.forEach(doc => {
                     if (doc.data().text) {
-                        comments.push(doc.data().text);
+                        comments.push({ id: doc.id, text: doc.data().text });
                     }
                 });
                 return comments;
             } catch (err) {
                 console.log("Error fetching from Firebase:", err);
-                const local = localStorage.getItem('aya_secret_comment');
-                return local ? [local] : [];
+                const localId = localStorage.getItem('my_aya_comment_id');
+                const localText = localStorage.getItem('aya_secret_comment');
+                return localId && localText ? [{ id: localId, text: localText }] : [];
             }
         }
 
@@ -977,23 +982,41 @@
 
             if (passInput.value === 'Aya05') {
                 const comments = await fetchCommentsFromFirebase();
+                const myCommentId = localStorage.getItem('my_aya_comment_id');
+                const hasAlreadyCommented = myCommentId !== null;
                 
-                let commentSectionHTML = `
-                    <div class="comment-box-container" id="commentAreaWrapper">
-                        <p style="font-family: 'Playfair Display', serif; color: #ff8fa3; font-size: 1.05rem; margin-bottom: 8px; text-align: right;">Write or view comments:</p>
-                        <textarea id="ayaCommentInput" class="comment-input" placeholder="Write your comment or feelings here..."></textarea>
+                let commentSectionHTML = `<div class="comment-box-container" id="commentAreaWrapper">`;
+                
+                if (!hasAlreadyCommented) {
+                    commentSectionHTML += `
+                        <p style="font-family: 'Playfair Display', serif; color: #ff8fa3; font-size: 1.05rem; margin-bottom: 8px; text-align: right;">اكتب تعليقك:</p>
+                        <textarea id="ayaCommentInput" class="comment-input" placeholder="اكتب تعليقك أو مشاعرك هنا..."></textarea>
                         <div style="text-align: left; margin-bottom: 15px;">
-                            <button class="comment-submit-btn" onclick="saveAyaComment()">Submit Comment</button>
+                            <button class="comment-submit-btn" onclick="saveAyaComment()">إرسال التعليق</button>
                         </div>
-                        <div id="commentsListDisplay">
-                `;
+                    `;
+                } else {
+                    commentSectionHTML += `
+                        <div style="color: #ffd1dc; font-size: 0.95rem; text-align: right; margin-bottom: 15px; font-style: italic;">
+                            لقد قمت بكتابة تعليق بالفعل. يمكنك حذفه إذا كنت تريد كتابة تعليق جديد.
+                        </div>
+                    `;
+                }
+
+                commentSectionHTML += `<div id="commentsListDisplay">`;
 
                 if (comments.length > 0) {
                     comments.forEach(c => {
-                        commentSectionHTML += `<div class="saved-comment-display">"${c}"</div>`;
+                        const isMine = (c.id === myCommentId);
+                        commentSectionHTML += `
+                            <div class="saved-comment-display">
+                                <span style="word-break: break-word; text-align: right; flex: 1;">"${c.text}"</span>
+                                ${isMine ? `<button onclick="deleteAyaComment('${c.id}')" style="background: #ff4d94; color: #fff; border: none; padding: 6px 14px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; white-space: nowrap;">حذف</button>` : ''}
+                            </div>
+                        `;
                     });
                 } else {
-                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: right; font-style: italic;" id="noCommentsYet">No comments yet. Be the first to write one!</div>`;
+                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: right; font-style: italic;" id="noCommentsYet">لا توجد تعليقات بعد. كن أول من يكتب تعليقاً!</div>`;
                 }
 
                 commentSectionHTML += `</div></div>`;
@@ -1019,35 +1042,43 @@
             if (commentInput && commentInput.value.trim() !== '') {
                 const text = commentInput.value.trim();
                 
-                // حفظ محلي احتياطي فوري
-                localStorage.setItem('aya_secret_comment', text);
-
-                // إظهار التعليق في الواجهة فوراً للمستخدم لضمان الاستجابة السريعة
-                const listDisplay = document.getElementById('commentsListDisplay');
-                const noCommentsMsg = document.getElementById('noCommentsYet');
-                if (noCommentsMsg) {
-                    noCommentsMsg.remove();
-                }
-
-                const newDiv = document.createElement('div');
-                newDiv.className = 'saved-comment-display';
-                newDiv.innerText = `"${text}"`;
-                if (listDisplay) {
-                    listDisplay.prepend(newDiv);
-                }
-                
-                const commentTextToSend = text;
-                commentInput.value = '';
-
-                // حفظ سحابياً في Firebase Firestore لكي يراه أي شخص يدخل بكلمة المرور
                 try {
-                    await db.collection('aya_comments').add({
-                        text: commentTextToSend,
+                    // حفظ في Firebase وجلب الـ ID الخاص بالتعليق
+                    const docRef = await db.collection('aya_comments').add({
+                        text: text,
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
+
+                    localStorage.setItem('my_aya_comment_id', docRef.id);
+                    localStorage.setItem('aya_secret_comment', text);
+
+                    // تحديث محتوى النافذة فوراً ليعرض زر الحذف ويمنع كتابة تعليق آخر
+                    checkSecretPassword();
                 } catch(e) {
                     console.log("Error saving to Firebase:", e);
+                    const fakeId = 'local_' + Date.now();
+                    localStorage.setItem('my_aya_comment_id', fakeId);
+                    localStorage.setItem('aya_secret_comment', text);
+                    checkSecretPassword();
                 }
+            }
+        }
+
+        async function deleteAyaComment(id) {
+            try {
+                if (!id.startsWith('local_')) {
+                    await db.collection('aya_comments').doc(id).delete();
+                }
+                localStorage.removeItem('my_aya_comment_id');
+                localStorage.removeItem('aya_secret_comment');
+                
+                // تحديث النافذة ليعود مربع الكتابة وتتمكن من كتابة تعليق جديد
+                checkSecretPassword();
+            } catch(e) {
+                console.log("Error deleting from Firebase:", e);
+                localStorage.removeItem('my_aya_comment_id');
+                localStorage.removeItem('aya_secret_comment');
+                checkSecretPassword();
             }
         }
 
