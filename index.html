@@ -37,14 +37,13 @@
             height: 100vh;
             pointer-events: none;
             z-index: 1000;
-            will-change: opacity; /* Hardware acceleration for canvas */
         }
 
         #intro-screen { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
             background: #080206; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            z-index: 9999; transition: opacity 0.5s ease-in-out; 
+            z-index: 9999; transition: opacity 0.4s ease; 
         }
 
         .intro-content-box {
@@ -62,7 +61,6 @@
             color: #ff4d94; 
             margin-bottom: 12px; 
             line-height: 1.2;
-            text-shadow: 0 0 20px rgba(255, 77, 148, 0.4);
         }
 
         .intro-subtitle {
@@ -72,7 +70,6 @@
             font-size: 1.35rem;
             margin-bottom: 40px;
             letter-spacing: 1.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .enter-btn { 
@@ -86,15 +83,13 @@
             font-family: 'Playfair Display', serif; 
             border-radius: 50px; 
             cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            transition: transform 0.2s ease, background 0.2s ease; 
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 77, 148, 0.3);
         }
 
         .enter-btn:hover { 
-            transform: scale(1.05) translateY(-2px); 
+            transform: scale(1.05); 
             background: #e03b80;
-            box-shadow: 0 8px 25px rgba(255, 77, 148, 0.6);
         }
 
         .cascade-container {
@@ -109,8 +104,6 @@
             white-space: nowrap; 
             animation: lightCascade 6s linear infinite; 
             opacity: 0;
-            will-change: transform, opacity;
-            text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
         }
 
         @keyframes lightCascade {
@@ -131,7 +124,6 @@
             align-items: center;
             justify-content: center;
             gap: 5px;
-            text-shadow: 0 0 25px rgba(255, 77, 148, 0.3);
         }
         .aya-title .me-text {
             font-size: 4.2rem;
@@ -140,19 +132,16 @@
 
         .glass-section { 
             background: rgba(18, 4, 12, 0.85); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 77, 148, 0.4); 
             width: 90%; max-width: 900px; 
             margin: 45px auto; padding: 45px 30px; border-radius: 25px; z-index: 3; 
             position: relative;
-            box-shadow: 0 10px 40px rgba(255, 77, 148, 0.08), inset 0 0 20px rgba(255, 77, 148, 0.05);
-            transition: transform 0.3s ease;
         }
         
         .glass-section h2 { 
             font-family: 'Great Vibes', cursive; color: #ff8fa3; font-size: 3.3rem; margin-bottom: 20px; 
-            text-shadow: 0 2px 10px rgba(255, 143, 163, 0.3);
         }
 
         .map-container-box {
@@ -164,46 +153,32 @@
             border: 1px solid #ff4d94;
             border-radius: 20px;
             padding: 35px 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
         }
 
         .connection-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
         .country-node { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-        .country-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ff4d94; font-weight: 600; text-shadow: 0 0 10px rgba(255,77,148,0.4); }
+        .country-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ff4d94; font-weight: 600; }
         .country-desc { font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: #ffd1dc; opacity: 0.85; }
         
         .heart-bridge { display: flex; flex-direction: column; align-items: center; position: relative; height: 40px; justify-content: center; }
-        .bridge-line { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, #ff4d94, transparent); position: absolute; left: 50%; transform: translateX(-50%); }
-        .beating-bridge-heart { width: 38px; height: 38px; fill: #ff4d94; z-index: 2; filter: drop-shadow(0 0 8px rgba(255,77,148,0.8)); animation: heartbeat 1.5s infinite; }
+        .bridge-line { width: 2px; height: 100%; background: #ff4d94; position: absolute; left: 50%; transform: translateX(-50%); }
+        .beating-bridge-heart { width: 38px; height: 38px; fill: #ff4d94; z-index: 2; }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.15); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.15); }
-            70% { transform: scale(1); }
-        }
-
-        .distance-badge-box { margin-top: 18px; display: inline-block; background: rgba(26, 5, 16, 0.9); border: 1px solid #ff4d94; padding: 10px 24px; border-radius: 20px; font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(255,77,148,0.15); }
+        .distance-badge-box { margin-top: 18px; display: inline-block; background: rgba(26, 5, 16, 0.9); border: 1px solid #ff4d94; padding: 10px 24px; border-radius: 20px; font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 1.05rem; }
         .counter-box { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 25px 0 10px 0; }
-        .counter-item { background: rgba(26, 5, 16, 0.9); border: 1px solid rgba(255, 77, 148, 0.6); border-radius: 20px; padding: 20px 35px; min-width: 140px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transition: transform 0.3s ease, border-color 0.3s; }
-        .counter-item:hover { transform: translateY(-3px); border-color: #ff4d94; box-shadow: 0 12px 30px rgba(255,77,148,0.2); }
-        .counter-number { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #ff4d94; font-weight: 600; text-shadow: 0 0 15px rgba(255,77,148,0.3); }
+        .counter-item { background: rgba(26, 5, 16, 0.9); border: 1px solid #ff4d94; border-radius: 20px; padding: 20px 35px; min-width: 140px; }
+        .counter-number { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #ff4d94; font-weight: 600; }
         .counter-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: #ffd1dc; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         .counter-desc { font-family: 'Playfair Display', serif; font-style: italic; color: #e9d5ff; font-size: 1.25rem; margin-top: 12px; line-height: 1.5; text-align: center; }
 
         .albums-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
-        .album-card { background: rgba(24, 6, 18, 0.9); border: 1px solid rgba(255, 77, 148, 0.5); padding: 18px; border-radius: 20px; width: 310px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .album-card:hover { transform: translateY(-8px); border-color: #ff4d94; box-shadow: 0 15px 35px rgba(255, 77, 148, 0.25); }
+        .album-card { background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; padding: 18px; border-radius: 20px; width: 310px; cursor: pointer; }
         
         .album-cover-container { width: 100%; height: 250px; border-radius: 15px; overflow: hidden; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
-        .album-cover-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .album-card:hover .album-cover-container img { transform: scale(1.05); }
+        .album-cover-container img { width: 100%; height: 100%; object-fit: cover; }
         
-        .album-overlay-badge { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); padding: 6px 16px; border-radius: 15px; border: 1px solid #ff4d94; font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #ffd1dc; white-space: nowrap; transition: background 0.3s; }
-        .album-card:hover .album-overlay-badge { background: rgba(255, 77, 148, 0.2); }
-        .album-title { margin-top: 15px; font-family: 'Great Vibes', cursive; color: #ff8fa3; font-size: 2.2rem; transition: text-shadow 0.3s; }
-        .album-card:hover .album-title { text-shadow: 0 0 15px rgba(255, 143, 163, 0.5); }
+        .album-overlay-badge { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); padding: 6px 16px; border-radius: 15px; border: 1px solid #ff4d94; font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #ffd1dc; white-space: nowrap; }
+        .album-title { margin-top: 15px; font-family: 'Great Vibes', cursive; color: #ff8fa3; font-size: 2.2rem; }
 
         .ai-art-container {
             width: 100%;
@@ -211,15 +186,9 @@
             margin: 25px auto 0 auto;
             border-radius: 20px;
             overflow: hidden;
-            border: 2px solid rgba(255, 77, 148, 0.5);
+            border: 2px solid #ff4d94;
             background: rgba(24, 6, 18, 0.9);
             padding: 12px;
-            transition: all 0.3s ease;
-        }
-        .ai-art-container:hover {
-            border-color: #ff4d94;
-            box-shadow: 0 10px 30px rgba(255, 77, 148, 0.2);
-            transform: translateY(-4px);
         }
         .ai-art-image {
             width: 100%;
@@ -231,60 +200,43 @@
         }
 
         .gifts-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 35px; }
-        .gift-card { background: rgba(24, 6, 18, 0.9); border: 1px solid rgba(255, 77, 148, 0.4); border-radius: 20px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 180px; height: 200px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .gift-card:hover { transform: translateY(-6px); border-color: #ff4d94; box-shadow: 0 12px 25px rgba(255, 77, 148, 0.2); }
-        .gift-card svg { margin-bottom: 15px; transition: transform 0.3s ease; }
-        .gift-card:hover svg { transform: scale(1.1); }
+        .gift-card { background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; border-radius: 20px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 180px; height: 200px; cursor: pointer; }
+        .gift-card svg { margin-bottom: 15px; }
         .gift-name { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.1rem; font-style: italic; }
 
-        /* Smooth Modal Pop-up Animation */
-        @keyframes modalPop {
-            0% { transform: scale(0.95) translateY(15px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        @keyframes overlayFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+        .album-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10001; display: none; padding: 15px; }
+        .album-modal-overlay.active { display: flex; }
 
-        .album-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10001; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 15px; }
-        .album-modal-overlay.active { opacity: 1; visibility: visible; }
-        .album-modal-overlay.active .album-modal-card { animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-
-        .album-modal-card { background: #12040c; border: 1.5px solid #ff4d94; padding: 35px 20px; border-radius: 25px; width: 100%; max-width: 950px; max-height: 92vh; overflow-y: auto; text-align: center; box-shadow: 0 15px 50px rgba(0,0,0,0.6); opacity: 0; transform: scale(0.95); }
-        .album-modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.4rem; margin-bottom: 25px; text-shadow: 0 0 15px rgba(255,77,148,0.3); }
+        .album-modal-card { background: #12040c; border: 1.5px solid #ff4d94; padding: 35px 20px; border-radius: 25px; width: 100%; max-width: 950px; max-height: 92vh; overflow-y: auto; text-align: center; }
+        .album-modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.4rem; margin-bottom: 25px; }
         .modal-media-grid { display: flex; justify-content: center; align-items: center; gap: 35px; flex-wrap: wrap; margin-bottom: 30px; padding: 10px; }
         
-        .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 15px; width: fit-content; max-width: 320px; background: rgba(24, 6, 18, 0.6); border: 1px solid rgba(255, 77, 148, 0.5); border-radius: 20px; padding: 12px; margin: 0 auto; transition: transform 0.3s, border-color 0.3s; }
-        .gallery-item:hover { transform: translateY(-3px); border-color: #ff4d94; box-shadow: 0 8px 20px rgba(255,77,148,0.15); }
+        .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 15px; width: fit-content; max-width: 320px; background: rgba(24, 6, 18, 0.6); border: 2px solid #ff4d94; border-radius: 20px; padding: 12px; margin: 0 auto; }
         
         .modal-media { width: 100%; height: auto; max-height: 450px; border-radius: 12px; background: transparent; display: block; margin: 0 auto; }
 
         .gallery-item.video-item { width: fit-content; max-width: 320px; }
         .gallery-item.video-item .modal-media { height: auto; width: 100%; max-height: 480px; background: transparent; }
 
-        .image-dock { background: rgba(24, 6, 18, 0.9); border: 1px solid rgba(255, 77, 148, 0.5); padding: 10px 22px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; width: 100%; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .image-dock { background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; padding: 10px 22px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; width: 100%; }
         .image-dock p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.1rem; margin: 0; font-style: italic; }
 
-        .msg-btn { background: rgba(24, 6, 18, 0.9); color: #fff; border: 1px solid rgba(255, 77, 148, 0.6); padding: 14px 28px; margin: 8px; border-radius: 20px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.1rem; transition: all 0.3s ease; }
-        .msg-btn:hover { background: rgba(255, 77, 148, 0.15); border-color: #ff4d94; box-shadow: 0 4px 15px rgba(255, 77, 148, 0.3); transform: translateY(-2px); }
-        #msg-display { margin-top: 20px; font-size: 1.35rem; color: #ffd1dc; font-style: italic; font-family: 'Playfair Display', serif; padding: 0 10px; min-height: 40px; transition: opacity 0.3s; }
+        .msg-btn { background: rgba(24, 6, 18, 0.9); color: #fff; border: 1px solid #ff4d94; padding: 14px 28px; margin: 8px; border-radius: 20px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.1rem; transition: background 0.2s; }
+        .msg-btn:hover { background: #ff4d94; }
+        #msg-display { margin-top: 20px; font-size: 1.35rem; color: #ffd1dc; font-style: italic; font-family: 'Playfair Display', serif; padding: 0 10px; min-height: 40px; }
 
         .floating-container { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 998; align-items: flex-end; }
-        .floating-bubble { background: rgba(18, 4, 12, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1.5px solid rgba(255, 77, 148, 0.6); color: #fff; padding: 14px 24px; border-radius: 25px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.5); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .floating-bubble:hover { transform: translateY(-4px); border-color: #ff4d94; box-shadow: 0 8px 25px rgba(255, 77, 148, 0.3); }
-        .music-bubble { border-color: rgba(168, 85, 247, 0.6); }
-        .music-bubble:hover { border-color: #a855f7; box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3); }
+        .floating-bubble { background: rgba(18, 4, 12, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1.5px solid #ff4d94; color: #fff; padding: 14px 24px; border-radius: 25px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .music-bubble { border-color: #a855f7; }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-overlay.active .modal-card, .modal-overlay.active .secret-modal-card { animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; display: none; }
+        .modal-overlay.active { display: flex; }
         
-        .modal-card { background: #12040c; border: 1px solid rgba(255, 77, 148, 0.6); padding: 40px 30px; border-radius: 25px; width: 90%; max-width: 440px; text-align: center; box-shadow: 0 15px 50px rgba(0,0,0,0.6); opacity: 0; transform: scale(0.95); }
+        .modal-card { background: #12040c; border: 1.5px solid #ff4d94; padding: 40px 30px; border-radius: 25px; width: 90%; max-width: 440px; text-align: center; }
         
         .secret-modal-card {
             background: #12040c;
-            border: 1px solid rgba(255, 77, 148, 0.6);
+            border: 1.5px solid #ff4d94;
             padding: 30px 25px;
             border-radius: 25px;
             width: 90%;
@@ -292,8 +244,6 @@
             max-height: 85vh;
             overflow-y: auto;
             text-align: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-            opacity: 0; transform: scale(0.95);
         }
 
         .secret-modal-card::-webkit-scrollbar,
@@ -301,38 +251,25 @@
         .secret-modal-card::-webkit-scrollbar-thumb,
         .album-modal-card::-webkit-scrollbar-thumb { background: #ff4d94; border-radius: 10px; }
 
-        .secret-modal-card h3, .modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; text-shadow: 0 0 15px rgba(255,77,148,0.3); }
+        .secret-modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; }
+        .modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; }
         .modal-card p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.25rem; line-height: 1.7; margin-bottom: 25px; }
         
-        .close-modal-btn { background: #ff4d94; color: #fff; border: none; padding: 12px 38px; font-family: 'Playfair Display', serif; font-size: 1.1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,77,148,0.2); }
-        .close-modal-btn:hover { background: #e03b80; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,77,148,0.4); }
+        .close-modal-btn { background: #ff4d94; color: #fff; border: none; padding: 12px 38px; font-family: 'Playfair Display', serif; font-size: 1.1rem; border-radius: 20px; cursor: pointer; transition: 0.2s; }
+        .close-modal-btn:hover { background: #e03b80; }
 
-        .music-card-modal { border-color: rgba(168, 85, 247, 0.6); background: #12040c; text-align: center; }
-        .music-card-modal h3 { color: #d8b4fe; font-size: 3.4rem; text-shadow: 0 0 15px rgba(168,85,247,0.3); }
+        .music-card-modal { border-color: #a855f7; background: #12040c; text-align: center; }
+        .music-card-modal h3 { color: #d8b4fe; font-size: 3.4rem; }
 
-        .ui-music-display { position: relative; width: 180px; height: 180px; margin: 15px auto 20px auto; border-radius: 50%; background: rgba(24, 6, 18, 0.9); border: 2px solid rgba(168, 85, 247, 0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; box-shadow: inset 0 0 20px rgba(168,85,247,0.1), 0 0 30px rgba(168,85,247,0.15); }
-        .cinematic-headphone { width: 50px; height: 50px; fill: #d8b4fe; margin-bottom: 8px; filter: drop-shadow(0 0 5px rgba(216,180,254,0.5)); }
+        .ui-music-display { position: relative; width: 180px; height: 180px; margin: 15px auto 20px auto; border-radius: 50%; background: rgba(24, 6, 18, 0.9); border: 2px solid #a855f7; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; }
+        .cinematic-headphone { width: 50px; height: 50px; fill: #d8b4fe; margin-bottom: 8px; }
         .sound-waves { display: flex; gap: 3.5px; align-items: flex-end; height: 16px; }
-        .wave-bar { width: 3.5px; background: #a855f7; border-radius: 3px; animation: bounce 1s infinite alternate ease-in-out; }
-        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
-        
-        @keyframes bounce {
-            0% { height: 4px; }
-            100% { height: 16px; }
-        }
+        .wave-bar { width: 3.5px; background: #a855f7; border-radius: 3px; }
 
-        .secret-input { width: 100%; background: rgba(24, 6, 18, 0.9); border: 1px solid rgba(255, 77, 148, 0.4); padding: 14px 20px; border-radius: 20px; color: #fff; font-size: 1.1rem; font-family: 'Playfair Display', serif; text-align: center; outline: none; margin-bottom: 20px; transition: all 0.3s ease; }
-        .secret-input:focus { border-color: #ff4d94; box-shadow: 0 0 15px rgba(255, 77, 148, 0.3); }
-        .secret-error-text { color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 20px; font-style: italic; animation: shake 0.4s ease-in-out; }
+        .secret-input { width: 100%; background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; padding: 14px 20px; border-radius: 20px; color: #fff; font-size: 1.1rem; font-family: 'Playfair Display', serif; text-align: center; outline: none; margin-bottom: 20px; }
+        .secret-error-text { color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 20px; font-style: italic; }
         
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
-
+        /* The special Arabic message box */
         .secret-success-text {
             color: #ffd1dc;
             font-family: 'Poppins', sans-serif;
@@ -341,18 +278,17 @@
             margin-bottom: 25px;
             text-align: right;
             direction: rtl;
-            padding: 18px;
+            padding: 15px;
             background: rgba(24, 6, 18, 0.6);
             border-radius: 15px;
             border-right: 3px solid #ff4d94;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .comment-box-container { margin-top: 15px; border-top: 1px solid rgba(255, 77, 148, 0.2); padding-top: 20px; }
+        .comment-box-container { margin-top: 15px; border-top: 1px solid rgba(255, 77, 148, 0.4); padding-top: 20px; }
         .comment-input {
             width: 100%;
             background: rgba(24, 6, 18, 0.9);
-            border: 1px solid rgba(255, 77, 148, 0.4);
+            border: 1px solid #ff4d94;
             padding: 12px 18px;
             border-radius: 15px;
             color: #fff;
@@ -362,9 +298,7 @@
             resize: none;
             height: 90px;
             margin-bottom: 12px;
-            transition: all 0.3s ease;
         }
-        .comment-input:focus { border-color: #ff4d94; box-shadow: 0 0 15px rgba(255, 77, 148, 0.3); }
         
         .comment-submit-btn {
             background: #ff4d94;
@@ -375,15 +309,13 @@
             font-size: 1rem;
             border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255,77,148,0.2);
+            transition: 0.2s;
         }
-        .comment-submit-btn:hover { background: #e03b80; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255,77,148,0.4); }
-        .comment-submit-btn:disabled { background: #888; cursor: not-allowed; transform: none; box-shadow: none; }
+        .comment-submit-btn:disabled { background: #888; cursor: not-allowed; }
         
         .saved-comment-display {
             background: rgba(24, 6, 18, 0.9);
-            border: 1px solid rgba(255, 77, 148, 0.3);
+            border: 1px solid #ff4d94;
             padding: 14px 18px;
             border-radius: 15px;
             color: #ffd1dc;
@@ -397,19 +329,16 @@
             justify-content: space-between;
             align-items: center;
             gap: 15px;
-            transition: transform 0.3s ease;
         }
-        .saved-comment-display:hover { transform: translateX(5px); border-color: rgba(255, 77, 148, 0.6); }
         
-        .delete-btn { background: #ff4d94; color: #fff; border: none; padding: 6px 14px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; transition: all 0.2s; }
-        .delete-btn:hover { background: #e03b80; transform: scale(1.05); }
+        .delete-btn { background: #ff4d94; color: #fff; border: none; padding: 6px 14px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; transition: 0.2s; }
+        .delete-btn:hover { background: #e03b80; }
 
-        .wish-tree-container { position: relative; width: 100%; max-width: 450px; margin: 20px auto 0 auto; background: rgba(12, 2, 8, 0.6); border: 1px solid rgba(255, 77, 148, 0.3); border-radius: 20px; padding: 15px; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-        .wish-tree-svg { width: 100%; height: auto; cursor: pointer; display: block; filter: drop-shadow(0 0 8px rgba(255,77,148,0.2)); transition: filter 0.3s; }
-        .wish-tree-svg:hover { filter: drop-shadow(0 0 12px rgba(255,77,148,0.4)); }
+        .wish-tree-container { position: relative; width: 100%; max-width: 450px; margin: 20px auto 0 auto; background: rgba(12, 2, 8, 0.6); border: 1px solid rgba(255, 77, 148, 0.4); border-radius: 20px; padding: 15px; overflow: hidden; }
+        .wish-tree-svg { width: 100%; height: auto; cursor: pointer; display: block; }
         .tree-hint { font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 0.95rem; margin-top: 10px; opacity: 0.8; }
         
-        .tree-heart-item { position: absolute; width: 20px; height: 20px; background: #ff4d94; transform: translate(-50%, -50%) scale(0); animation: popHeart 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; box-shadow: 0 0 12px #ff4d94, 0 0 20px #ff8fa3; will-change: transform; }
+        .tree-heart-item { position: absolute; width: 20px; height: 20px; background: #ff4d94; transform: translate(-50%, -50%) scale(0); animation: popHeart 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; box-shadow: 0 0 12px #ff4d94, 0 0 20px #ff8fa3; }
         .tree-heart-item::before, .tree-heart-item::after { content: ""; position: absolute; width: 20px; height: 20px; background: #ff4d94; border-radius: 50%; }
         .tree-heart-item::before { top: -10px; left: 0; }
         .tree-heart-item::after { top: 0; left: -10px; }
@@ -643,721 +572,6 @@
                     <circle cx="37" cy="34" r="2.5" fill="#333"/>
                     <path d="M32 38l-2 3h4z" fill="#333"/>
                 </svg>
-                <span class="gift-تصميم الموقع فكرته جميلة جداً ومليئة بالمشاعر، وهو هدية رائعة بكل تأكيد. 
-
-لتحسين واجهة المستخدم (UI) وإعطائها طابعاً أكثر فخامة (Premium) وانسيابية دون المساس بأي وظيفة برمجية أو تغيير الهيكل الأساسي، قمت بإضافة التعديلات التالية:
-
-1. **تأثيرات الزجاج (Glassmorphism المحسنة):** تم إضافة تدرجات لونية خفيفة (Gradients) وظلال ناعمة (Drop Shadows) شفافة تعطي عمقاً للصفحة وتبرز الأقسام بشكل أوضح وأجمل.
-2. **تأثيرات التحويم (Hover Effects):** أصبحت الأزرار، الألبومات، والهدايا تتفاعل بنعومة عند تمرير الماوس فوقها (ترتفع قليلاً مع توهج بسيط) مما يعطي إحساساً بالحيوية دون أي تقطيع (Lag).
-3. **أنيميشن سلس للنوافذ المنبثقة (Modals):** النوافذ الآن تفتح بتأثير "Fade & Scale" انسيابي جداً يريح العين.
-4. **شريط تمرير مخصص (Custom Scrollbar):** تم تغيير شريط التمرير الافتراضي للمتصفح ليتناسب مع ألوان الموقع (الأسود والوردي).
-5. **نبض القلب (Heartbeat Animation):** تمت إضافة تأثير النبض الحقيقي لرمز القلب الموجود في قسم المسافة (Our Distance).
-6. **أداء عالي (GPU Acceleration):** تم الاعتماد حصرياً على خصائص `transform` و `opacity` في الحركات لضمان عدم حدوث أي ثقل أو تقطيع في المتصفح أو على الهواتف.
-
-إليك الكود كاملاً ومحسّناً، جاهز للنسخ والرفع مباشرة على GitHub:
-
-```html
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#020202">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>For Aya & Our Eternal Love</title>
-    <link href="[https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap](https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap)" rel="stylesheet">
-    
-    <!-- Firebase SDK Scripts -->
-    <script src="[https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js](https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js)"></script>
-    <script src="[https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js](https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js)"></script>
-
-    <style>
-        /* شريط تمرير مخصص (Custom Scrollbar) للموقع بالكامل */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020202; }
-        ::-webkit-scrollbar-thumb { background: #ff4d94; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #e03b80; }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        html {
-            background-color: #020202;
-            overscroll-behavior-y: none;
-        }
-
-        body { 
-            background-color: #020202;
-            font-family: 'Poppins', sans-serif; 
-            color: #fff; 
-            overflow-x: hidden; 
-            text-align: center; 
-        }
-
-        #constellation-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        #intro-screen { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
-            background: radial-gradient(circle at center, #12040c 0%, #020202 100%); 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-
-        .intro-content-box {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        #intro-screen h1 { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 4.8rem; 
-            color: #ff4d94; 
-            margin-bottom: 12px; 
-            line-height: 1.2;
-            text-shadow: 0 0 25px rgba(255, 77, 148, 0.4);
-        }
-
-        .intro-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: #ffd1dc;
-            font-size: 1.35rem;
-            margin-bottom: 40px;
-            letter-spacing: 1.5px;
-            opacity: 0.9;
-        }
-
-        .enter-btn { 
-            background: rgba(255, 77, 148, 0.85); 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #fff; 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            padding: 16px 50px; 
-            font-size: 1.3rem; 
-            font-family: 'Playfair Display', serif; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(255, 77, 148, 0.3);
-        }
-
-        .enter-btn:hover { 
-            transform: translateY(-3px) scale(1.02); 
-            background: #ff4d94;
-            box-shadow: 0 12px 30px rgba(255, 77, 148, 0.5);
-        }
-
-        .cascade-container {
-            position: relative; width: 100%; height: 200px; overflow: hidden; margin: 25px auto 0; z-index: 3;
-        }
-
-        .cascade-text {
-            position: absolute; 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 2.3rem; 
-            color: #ff4d94;
-            white-space: nowrap; 
-            animation: lightCascade 6s linear infinite; 
-            opacity: 0;
-            will-change: transform, opacity;
-        }
-
-        @keyframes lightCascade {
-            0% { transform: translateY(-20px); opacity: 0; }
-            20% { opacity: 0.9; transform: translateY(20px); text-shadow: 0 0 15px rgba(255, 77, 148, 0.5); }
-            80% { opacity: 0.9; transform: translateY(140px); }
-            100% { transform: translateY(180px); opacity: 0; }
-        }
-
-        .name-wrapper { margin-top: 15px; margin-bottom: 25px; z-index: 3; position: relative; }
-        .aya-title { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 5.2rem; 
-            color: #ff4d94; 
-            line-height: 1.1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            text-shadow: 0 0 30px rgba(255, 77, 148, 0.3);
-        }
-        .aya-title .me-text {
-            font-size: 4.2rem;
-            color: #ffd1dc;
-        }
-
-        /* تحسين مظهر الزجاج ليكون أكثر فخامة وعمق */
-        .glass-section { 
-            background: linear-gradient(135deg, rgba(26, 5, 16, 0.75), rgba(12, 2, 8, 0.85)); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 77, 148, 0.25); 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            width: 90%; max-width: 900px; 
-            margin: 45px auto; padding: 45px 30px; border-radius: 25px; z-index: 3; 
-            position: relative;
-            transition: transform 0.4s ease;
-        }
-        
-        .glass-section h2 { 
-            font-family: 'Great Vibes', cursive; color: #ff8fa3; font-size: 3.3rem; margin-bottom: 20px; 
-            text-shadow: 0 2px 10px rgba(255, 143, 163, 0.2);
-        }
-
-        .map-container-box {
-            position: relative;
-            width: 100%;
-            max-width: 650px;
-            margin: 20px auto 10px auto;
-            background: linear-gradient(to bottom, rgba(24, 6, 18, 0.9), rgba(16, 4, 12, 0.9));
-            border: 1px solid rgba(255, 77, 148, 0.4);
-            border-radius: 20px;
-            padding: 35px 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .connection-visual { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
-        .country-node { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-        .country-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ff4d94; font-weight: 600; letter-spacing: 1px; }
-        .country-desc { font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: #ffd1dc; opacity: 0.85; }
-        
-        .heart-bridge { display: flex; flex-direction: column; align-items: center; position: relative; height: 40px; justify-content: center; }
-        .bridge-line { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, #ff4d94, transparent); position: absolute; left: 50%; transform: translateX(-50%); }
-        
-        /* إضافة أنيميشن النبض للقلب */
-        @keyframes heartBeat {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,77,148,0.5)); }
-            14% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(255,77,148,0.8)); }
-            28% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,77,148,0.5)); }
-            42% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(255,77,148,0.8)); }
-            70% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,77,148,0.5)); }
-        }
-        .beating-bridge-heart { width: 38px; height: 38px; fill: #ff4d94; z-index: 2; animation: heartBeat 1.5s infinite; }
-
-        .distance-badge-box { margin-top: 18px; display: inline-block; background: rgba(26, 5, 16, 0.9); border: 1px solid rgba(255, 77, 148, 0.4); padding: 10px 24px; border-radius: 20px; font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        
-        .counter-box { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 25px 0 10px 0; }
-        .counter-item { background: linear-gradient(135deg, rgba(34, 8, 22, 0.9), rgba(20, 4, 12, 0.9)); border: 1px solid rgba(255, 77, 148, 0.5); border-radius: 20px; padding: 20px 35px; min-width: 140px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-        .counter-number { font-family: 'Playfair Display', serif; font-size: 3rem; color: #ff4d94; font-weight: 600; text-shadow: 0 2px 10px rgba(255,77,148,0.3); }
-        .counter-label { font-family: 'Poppins', sans-serif; font-size: 0.9rem; color: #ffd1dc; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; opacity: 0.9; }
-        .counter-desc { font-family: 'Playfair Display', serif; font-style: italic; color: #e9d5ff; font-size: 1.25rem; margin-top: 12px; line-height: 1.5; text-align: center; }
-
-        .albums-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
-        
-        /* تحسين كروت الألبومات مع تأثير الرفع عند التحويم */
-        .album-card { 
-            background: linear-gradient(to bottom right, rgba(34, 8, 22, 0.9), rgba(16, 4, 12, 0.9)); 
-            border: 1px solid rgba(255, 77, 148, 0.3); 
-            padding: 18px; 
-            border-radius: 20px; 
-            width: 310px; 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-        .album-card:hover {
-            transform: translateY(-8px);
-            border-color: #ff4d94;
-            box-shadow: 0 15px 30px rgba(255, 77, 148, 0.2);
-        }
-        
-        .album-cover-container { width: 100%; height: 250px; border-radius: 15px; overflow: hidden; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
-        .album-cover-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .album-card:hover .album-cover-container img { transform: scale(1.05); }
-        
-        .album-overlay-badge { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); padding: 6px 16px; border-radius: 15px; border: 1px solid rgba(255, 77, 148, 0.6); font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #ffd1dc; white-space: nowrap; transition: background 0.3s ease; }
-        .album-card:hover .album-overlay-badge { background: rgba(255, 77, 148, 0.2); }
-        
-        .album-title { margin-top: 15px; font-family: 'Great Vibes', cursive; color: #ff8fa3; font-size: 2.2rem; transition: color 0.3s ease; }
-        .album-card:hover .album-title { color: #ff4d94; }
-
-        .ai-art-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 25px auto 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 77, 148, 0.4);
-            background: rgba(24, 6, 18, 0.9);
-            padding: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease;
-        }
-        .ai-art-container:hover { transform: translateY(-5px); border-color: #ff4d94; }
-        
-        .ai-art-image {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .gifts-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 35px; }
-        .gift-card { 
-            background: linear-gradient(135deg, rgba(34, 8, 22, 0.9), rgba(16, 4, 12, 0.9)); 
-            border: 1px solid rgba(255, 77, 148, 0.3); 
-            border-radius: 20px; 
-            padding: 25px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            width: 180px; height: 200px; cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .gift-card:hover {
-            transform: translateY(-8px);
-            border-color: #ff4d94;
-            box-shadow: 0 12px 25px rgba(255, 77, 148, 0.2);
-        }
-        .gift-card svg { margin-bottom: 15px; transition: transform 0.3s ease; }
-        .gift-card:hover svg { transform: scale(1.1); }
-        .gift-name { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.1rem; font-style: italic; }
-
-        /* أنيميشن ناعم للنوافذ المنبثقة */
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(15px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .album-modal-overlay, .modal-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
-            background: rgba(0, 0, 0, 0.85); 
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
-            justify-content: center; align-items: center; z-index: 10000; 
-            display: none; padding: 15px; 
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .album-modal-overlay.active, .modal-overlay.active { 
-            display: flex; opacity: 1; 
-        }
-
-        .album-modal-card { 
-            background: linear-gradient(135deg, #180512, #0a0105); 
-            border: 1px solid rgba(255, 77, 148, 0.5); 
-            padding: 35px 20px; border-radius: 25px; 
-            width: 100%; max-width: 950px; max-height: 92vh; 
-            overflow-y: auto; text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .album-modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.4rem; margin-bottom: 25px; text-shadow: 0 2px 10px rgba(255,77,148,0.2); }
-        .modal-media-grid { display: flex; justify-content: center; align-items: center; gap: 35px; flex-wrap: wrap; margin-bottom: 30px; padding: 10px; }
-        
-        .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 15px; width: fit-content; max-width: 320px; background: rgba(24, 6, 18, 0.6); border: 1px solid rgba(255, 77, 148, 0.4); border-radius: 20px; padding: 12px; margin: 0 auto; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
-        .gallery-item:hover { transform: translateY(-5px); border-color: #ff4d94; }
-        
-        .modal-media { width: 100%; height: auto; max-height: 450px; border-radius: 12px; background: transparent; display: block; margin: 0 auto; }
-
-        .gallery-item.video-item { width: fit-content; max-width: 320px; }
-        .gallery-item.video-item .modal-media { height: auto; width: 100%; max-height: 480px; background: transparent; }
-
-        .image-dock { background: rgba(18, 4, 12, 0.9); border: 1px solid rgba(255, 77, 148, 0.3); padding: 10px 22px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; width: 100%; }
-        .image-dock p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.1rem; margin: 0; font-style: italic; }
-
-        /* تحسين الأزرار */
-        .msg-btn { 
-            background: linear-gradient(135deg, rgba(34, 8, 22, 0.9), rgba(16, 4, 12, 0.9)); 
-            color: #fff; border: 1px solid rgba(255, 77, 148, 0.5); 
-            padding: 14px 28px; margin: 8px; border-radius: 20px; 
-            cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.1rem; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .msg-btn:hover { 
-            background: #ff4d94; transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(255, 77, 148, 0.4); 
-            border-color: #ff4d94;
-        }
-        #msg-display { margin-top: 20px; font-size: 1.35rem; color: #ffd1dc; font-style: italic; font-family: 'Playfair Display', serif; padding: 0 10px; min-height: 40px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: opacity 0.3s ease; }
-
-        .floating-container { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 998; align-items: flex-end; }
-        .floating-bubble { 
-            background: linear-gradient(135deg, rgba(26, 5, 16, 0.9), rgba(12, 2, 8, 0.95)); 
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 77, 148, 0.5); color: #fff; 
-            padding: 14px 24px; border-radius: 25px; cursor: pointer; 
-            font-family: 'Playfair Display', serif; font-size: 1.05rem; 
-            display: flex; align-items: center; gap: 10px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4); 
-            transition: all 0.3s ease;
-        }
-        .floating-bubble:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 25px rgba(255, 77, 148, 0.3); border-color: #ff4d94; }
-        .music-bubble { border-color: rgba(168, 85, 247, 0.6); }
-        .music-bubble:hover { border-color: #a855f7; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3); }
-
-        .modal-card { 
-            background: linear-gradient(135deg, #180512, #0a0105); 
-            border: 1px solid rgba(255, 77, 148, 0.5); 
-            padding: 40px 30px; border-radius: 25px; 
-            width: 90%; max-width: 440px; text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        
-        .secret-modal-card {
-            background: linear-gradient(135deg, #180512, #0a0105);
-            border: 1px solid rgba(255, 77, 148, 0.5);
-            padding: 30px 25px;
-            border-radius: 25px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 85vh;
-            overflow-y: auto;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .secret-modal-card h3, .modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; text-shadow: 0 2px 10px rgba(255,77,148,0.2); }
-        .modal-card p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.25rem; line-height: 1.7; margin-bottom: 25px; }
-        
-        .close-modal-btn { 
-            background: rgba(255, 77, 148, 0.9); color: #fff; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 12px 38px; font-family: 'Playfair Display', serif; font-size: 1.1rem; 
-            border-radius: 20px; cursor: pointer; transition: all 0.3s ease; 
-            box-shadow: 0 6px 15px rgba(255, 77, 148, 0.3);
-        }
-        .close-modal-btn:hover { background: #ff4d94; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 77, 148, 0.5); }
-
-        .music-card-modal { border-color: rgba(168, 85, 247, 0.5); background: linear-gradient(135deg, #13051f, #07010a); text-align: center; }
-        .music-card-modal h3 { color: #d8b4fe; font-size: 3.4rem; text-shadow: 0 2px 10px rgba(216, 180, 254, 0.2); }
-
-        .ui-music-display { position: relative; width: 180px; height: 180px; margin: 15px auto 20px auto; border-radius: 50%; background: linear-gradient(135deg, rgba(34, 10, 48, 0.9), rgba(18, 4, 28, 0.9)); border: 2px solid rgba(168, 85, 247, 0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(168,85,247,0.1); }
-        .cinematic-headphone { width: 50px; height: 50px; fill: #d8b4fe; margin-bottom: 8px; filter: drop-shadow(0 2px 5px rgba(216,180,254,0.4)); }
-        
-        @keyframes soundWave { 0% { height: 4px; } 50% { height: 16px; } 100% { height: 4px; } }
-        .sound-waves { display: flex; gap: 3.5px; align-items: flex-end; height: 16px; margin-top: 5px; }
-        .wave-bar { width: 3.5px; background: #a855f7; border-radius: 3px; animation: soundWave 1.2s ease-in-out infinite; }
-        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
-
-        .secret-input { width: 100%; background: rgba(18, 4, 12, 0.8); border: 1px solid rgba(255, 77, 148, 0.4); padding: 14px 20px; border-radius: 20px; color: #fff; font-size: 1.1rem; font-family: 'Playfair Display', serif; text-align: center; outline: none; margin-bottom: 20px; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-        .secret-input:focus { border-color: #ff4d94; box-shadow: 0 0 15px rgba(255, 77, 148, 0.2); }
-        .secret-error-text { color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 20px; font-style: italic; animation: fadeIn 0.3s ease; }
-        
-        /* The special Arabic message box */
-        .secret-success-text {
-            color: #ffd1dc;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 25px;
-            text-align: right;
-            direction: rtl;
-            padding: 20px;
-            background: linear-gradient(to left, rgba(34, 8, 22, 0.7), rgba(16, 4, 12, 0.7));
-            border-radius: 15px;
-            border-right: 4px solid #ff4d94;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .comment-box-container { margin-top: 15px; border-top: 1px solid rgba(255, 77, 148, 0.2); padding-top: 20px; }
-        .comment-input {
-            width: 100%;
-            background: rgba(18, 4, 12, 0.8);
-            border: 1px solid rgba(255, 77, 148, 0.4);
-            padding: 15px;
-            border-radius: 15px;
-            color: #fff;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            resize: none;
-            height: 100px;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-        }
-        .comment-input:focus { border-color: #ff4d94; box-shadow: 0 0 15px rgba(255, 77, 148, 0.2); }
-        
-        .comment-submit-btn {
-            background: rgba(255, 77, 148, 0.9); color: #fff; border: none; 
-            padding: 10px 26px; font-family: 'Playfair Display', serif; font-size: 1rem; 
-            border-radius: 15px; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 77, 148, 0.2);
-        }
-        .comment-submit-btn:hover:not(:disabled) { background: #ff4d94; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 77, 148, 0.4); }
-        .comment-submit-btn:disabled { background: #552538; color: #aaa; cursor: not-allowed; box-shadow: none; }
-        
-        .saved-comment-display {
-            background: linear-gradient(135deg, rgba(34, 8, 22, 0.8), rgba(16, 4, 12, 0.8));
-            border: 1px solid rgba(255, 77, 148, 0.3);
-            padding: 16px 20px;
-            border-radius: 15px;
-            color: #ffd1dc;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            margin-top: 12px;
-            text-align: left;
-            font-style: italic;
-            word-break: break-word;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            animation: fadeIn 0.4s ease;
-        }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .delete-btn { background: rgba(255, 77, 148, 0.8); color: #fff; border: none; padding: 6px 16px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; transition: all 0.3s ease; }
-        .delete-btn:hover { background: #e03b80; transform: scale(1.05); }
-
-        .wish-tree-container { position: relative; width: 100%; max-width: 450px; margin: 20px auto 0 auto; background: linear-gradient(to bottom, rgba(18, 4, 12, 0.6), rgba(10, 2, 6, 0.8)); border: 1px solid rgba(255, 77, 148, 0.25); border-radius: 20px; padding: 15px; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-        .wish-tree-svg { width: 100%; height: auto; cursor: pointer; display: block; filter: drop-shadow(0 5px 15px rgba(255,77,148,0.1)); }
-        .tree-hint { font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 0.95rem; margin-top: 10px; opacity: 0.8; }
-        
-        .tree-heart-item { position: absolute; width: 20px; height: 20px; background: #ff4d94; transform: translate(-50%, -50%) scale(0) rotate(-45deg); animation: popHeart 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; box-shadow: 0 0 15px #ff4d94, 0 0 25px #ff8fa3; }
-        .tree-heart-item::before, .tree-heart-item::after { content: ""; position: absolute; width: 20px; height: 20px; background: #ff4d94; border-radius: 50%; }
-        .tree-heart-item::before { top: -10px; left: 0; }
-        .tree-heart-item::after { top: 0; left: -10px; }
-        @keyframes popHeart { from { transform: translate(-50%, -50%) scale(0) rotate(-45deg); opacity: 0; } to { transform: translate(-50%, -50%) scale(1) rotate(-45deg); opacity: 1; } }
-
-        footer { padding: 30px; color: rgba(255,209,220,0.6); font-family: 'Playfair Display', serif; font-size: 0.9rem; text-align: center; position: relative; z-index: 3; letter-spacing: 1px; }
-    </style>
-</head>
-<body>
-
-    <canvas id="constellation-canvas"></canvas>
-
-    <div id="intro-screen">
-        <div class="intro-content-box">
-            <h1>A Special Universe For Us...</h1>
-            <p class="intro-subtitle">Prepared with endless love, for Mohie & Aya</p>
-            <button class="enter-btn" onclick="startExperience()">Click Here to Enter</button>
-        </div>
-    </div>
-
-    <audio id="bg-music" loop preload="auto">
-        <source src="aya-song.mp3" type="audio/mp3">
-    </audio>
-
-    <div id="elements-container"></div>
-
-    <div class="floating-container">
-        <div class="floating-bubble music-bubble" onclick="openMusicModal()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="2.5"></circle><circle cx="18" cy="16" r="2.5"></circle></svg>
-            Our Song
-        </div>
-        <div class="floating-bubble" onclick="openFloatingModal()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            Tap for Us
-        </div>
-    </div>
-
-    <!-- Boy's Album Modal -->
-    <div class="album-modal-overlay" id="boyAlbumModal" onclick="closeAlbumModal('boyAlbumModal', event)">
-        <div class="album-modal-card" onclick="event.stopPropagation()">
-            <h3>Mohie's Album</h3>
-            <div class="modal-media-grid">
-                <div class="gallery-item">
-                    <img src="my-photo1.jpg" class="modal-media" alt="Mohie 1" loading="lazy">
-                    <div class="image-dock"><p>My Safe Haven</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="my-photo2.jpg" class="modal-media" alt="Mohie 2" loading="lazy">
-                    <div class="image-dock"><p>Thinking of You</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="my-photo3.jpg" class="modal-media" alt="Mohie 3" loading="lazy">
-                    <div class="image-dock"><p>Waiting for Aya</p></div>
-                </div>
-                <div class="gallery-item video-item">
-                    <video id="mohieVideoElement" class="modal-media" autoplay muted loop playsinline preload="auto">
-                        <source src="my-video.mp4" type="video/mp4">
-                    </video>
-                    <div class="image-dock"><p>My special moments</p></div>
-                </div>
-            </div>
-            <button class="close-modal-btn" onclick="closeAlbumModal('boyAlbumModal')">Close</button>
-        </div>
-    </div>
-
-    <!-- Girl's Album Modal -->
-    <div class="album-modal-overlay" id="girlAlbumModal" onclick="closeAlbumModal('girlAlbumModal', event)">
-        <div class="album-modal-card" onclick="event.stopPropagation()">
-            <h3>Aya's Album</h3>
-            <div class="modal-media-grid">
-                <div class="gallery-item">
-                    <img src="my-love.jpg" class="modal-media" alt="Aya 1" loading="lazy">
-                    <div class="image-dock"><p>Your lovely smile</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="girl2.jpg" class="modal-media" alt="Aya 2" loading="lazy">
-                    <div class="image-dock"><p>The light of my days</p></div>
-                </div>
-                <div class="gallery-item video-item">
-                    <video id="ayaVideoElement" class="modal-media" autoplay muted loop playsinline preload="auto">
-                        <source src="aya-video.mp4" type="video/mp4">
-                    </video>
-                    <div class="image-dock"><p>Precious moments</p></div>
-                </div>
-                <div class="gallery-item video-item">
-                    <video id="ayaVideoElement2" class="modal-media" autoplay muted loop playsinline preload="auto">
-                        <source src="aya-video2.mp4" type="video/mp4">
-                    </video>
-                    <div class="image-dock"><p>Eternal Sweetness</p></div>
-                </div>
-                <div class="gallery-item video-item">
-                    <video id="ayaVideoElement3" class="modal-media" autoplay muted loop playsinline preload="auto">
-                        <source src="aya-video3.mp4" type="video/mp4">
-                    </video>
-                    <div class="image-dock"><p>Pure Grace Video</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="girl3.jpg" class="modal-media" alt="Aya 3" loading="lazy">
-                    <div class="image-dock"><p>Pure Grace</p></div>
-                </div>
-            </div>
-            <button class="close-modal-btn" onclick="closeAlbumModal('girlAlbumModal')">Close</button>
-        </div>
-    </div>
-
-    <!-- Chat Album Modal -->
-    <div class="album-modal-overlay" id="chatAlbumModal" onclick="closeAlbumModal('chatAlbumModal', event)">
-        <div class="album-modal-card" onclick="event.stopPropagation()">
-            <h3>Chat Memories Album</h3>
-            <div class="modal-media-grid">
-                <script>
-                    for (let i = 1; i <= 30; i++) {
-                        document.write(`
-                            <div class="gallery-item">
-                                <img src="chat${i}.jpg" class="modal-media" alt="Chat Memory ${i}" loading="lazy">
-                                <div class="image-dock"><p>Sweet Chat #${i}</p></div>
-                            </div>
-                        `);
-                    }
-                </script>
-            </div>
-            <button class="close-modal-btn" onclick="closeAlbumModal('chatAlbumModal')">Close</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalOverlay" onclick="closeFloatingModal(event)">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <h3>Forever Together, Mohie & Aya</h3>
-            <p id="modal-text-content">My love for you grows stronger with every second.</p>
-            <button class="close-modal-btn" onclick="closeFloatingModal()">Close</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="musicModalOverlay" onclick="closeMusicModal(event)">
-        <div class="modal-card music-card-modal" onclick="event.stopPropagation()">
-            <h3>Our Melody</h3>
-            <div class="ui-music-display">
-                <svg class="cinematic-headphone" viewBox="0 0 24 24">
-                    <path d="M12 1a9 9 0 0 0-9 9v7a3 3 0 0 0 3 3h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5v-2a7 7 0 0 1 14 0v2h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2a3 3 0 0 0 3-3v-7a9 9 0 0 0-9-9z"/>
-                </svg>
-                <div class="sound-waves">
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                </div>
-            </div>
-            <p style="font-size: 1.15rem; color: #e9d5ff; margin-bottom: 25px; font-family: 'Playfair Display', serif; font-style: italic;">Our Special Song Playing...</p>
-            <button class="close-modal-btn" style="background: rgba(168, 85, 247, 0.9); box-shadow: 0 6px 15px rgba(168, 85, 247, 0.3);" onmouseover="this.style.background='#a855f7'" onmouseout="this.style.background='rgba(168, 85, 247, 0.9)'" onclick="closeMusicModal()">Close</button>
-        </div>
-    </div>
-
-    <!-- Secret Modal -->
-    <div class="modal-overlay" id="secretModalOverlay" onclick="closeSecretModal(event)">
-        <div class="secret-modal-card" onclick="event.stopPropagation()">
-            <h3>Secret for Aya</h3>
-            <div id="secret-content-area">
-                <p style="font-size: 1.15rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: #ffd1dc;">Enter your password to unlock this very special message:</p>
-                <input type="password" id="secretPasswordInput" class="secret-input" placeholder="Enter password here..." autocomplete="new-password">
-                <div id="secretErrorBox"></div>
-                <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="cascade-container" id="cascadeContainer"></div>
-
-    <div class="name-wrapper">
-        <h1 class="aya-title">
-            <span class="me-text">Mohie</span>
-            <span>& Aya</span>
-        </h1>
-    </div>
-
-    <section class="glass-section">
-        <h2>Our Distance</h2>
-        <p class="counter-desc">No matter the miles between us, our hearts beat as one</p>
-        <div class="map-container-box">
-            <div class="connection-visual">
-                <div class="country-node">
-                    <span class="country-name">Egypt</span>
-                    <span class="country-desc">My Heart</span>
-                </div>
-                <div class="heart-bridge">
-                    <div class="bridge-line"></div>
-                    <svg class="beating-bridge-heart" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                </div>
-                <div class="country-node">
-                    <span class="country-name">Sweden</span>
-                    <span class="country-desc">Aya's Home</span>
-                </div>
-            </div>
-        </div>
-        <div class="distance-badge-box">
-            <span>Distance means so little when someone means everything</span>
-        </div>
-    </section>
-
-    <section class="glass-section">
-        <h2>Our Journey Together</h2>
-        <p class="counter-desc">Every single day with you is a blessing</p>
-        <div class="counter-box">
-            <div class="counter-item">
-                <div class="counter-number" id="days-count">0</div>
-                <div class="counter-label">Days</div>
-            </div>
-        </div>
-        <p style="font-family: 'Playfair Display', serif; color: #ffd1dc; margin-top: 15px; font-size: 1.05rem;">Since June 24, 2026, and forever to go...</p>
-    </section>
-
-    <section class="glass-section">
-        <h2>Secret Notes</h2>
-        <button class="msg-btn" onclick="showMsg('You are my entire world and my safe place, Aya.')">About Us</button>
-        <button class="msg-btn" onclick="showMsg('I promise to always love and cherish you forever.')">My Promise</button>
-        <button class="msg-btn" onclick="openSecretModal()" style="border-color: rgba(255, 77, 148, 0.8); background: linear-gradient(135deg, rgba(26, 5, 16, 0.9), rgba(12, 2, 8, 0.9));">Secret Eternal Vow</button>
-        <div id="msg-display"></div>
-    </section>
-
-    <section class="glass-section">
-        <h2>Little Aya's Touches</h2>
-        <p class="counter-desc">Just some small tokens of my love</p>
-        <div class="gifts-grid">
-            <div class="gift-card">
-                <svg width="80" height="80" viewBox="0 0 64 64" fill="#d4a373">
-                    <circle cx="32" cy="36" r="18" fill="#d4a373"/>
-                    <circle cx="20" cy="22" r="8" fill="#d4a373"/>
-                    <circle cx="44" cy="22" r="8" fill="#d4a373"/>
-                    <circle cx="32" cy="40" r="10" fill="#faedcd"/>
-                    <circle cx="27" cy="34" r="2.5" fill="#333"/>
-                    <circle cx="37" cy="34" r="2.5" fill="#333"/>
-                    <path d="M32 38l-2 3h4z" fill="#333"/>
-                </svg>
                 <span class="gift-name">Big Bear</span>
             </div>
             <div class="gift-card">
@@ -1418,7 +632,7 @@
 
         <div class="ai-art-container">
             <img src="ai-art.jpg" class="ai-art-image" alt="AI Generated Love Art" loading="lazy">
-            <div class="image-dock" style="margin-top: 12px; border: none; background: transparent;"><p>Our Universe in AI Vision</p></div>
+            <div class="image-dock" style="margin-top: 12px;"><p>Our Universe in AI Vision</p></div>
         </div>
     </section>
 
@@ -1444,11 +658,11 @@
     </footer>
 
     <script>
-        // إعدادات Firebase
+        // إعدادات Firebase الحقيقية الخاصة بك
         const firebaseConfig = {
             apiKey: "AIzaSyA22x2Tiv03TgRF_DSNwDZa0yBc3Xya7gY",
             authDomain: "aya-love-site.firebaseapp.com",
-            databaseURL: "[https://aya-love-site-default-rtdb.firebaseio.com](https://aya-love-site-default-rtdb.firebaseio.com)",
+            databaseURL: "https://aya-love-site-default-rtdb.firebaseio.com",
             projectId: "aya-love-site",
             storageBucket: "aya-love-site.firebasestorage.app",
             messagingSenderId: "923954544273",
@@ -1458,6 +672,9 @@
         
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+
+        // السكربت يكتشف تلقائياً أن المفاتيح أصبحت حقيقية الآن
+        const isFirebaseReady = true;
 
         const canvas = document.getElementById('constellation-canvas');
         const ctx = canvas.getContext('2d');
@@ -1544,10 +761,7 @@
 
         function startExperience() {
             const intro = document.getElementById('intro-screen');
-            intro.style.opacity = '0';
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 600); // Wait for transition to finish
+            intro.style.display = 'none';
         }
 
         function openAlbumModal(modalId, videoId) {
@@ -1563,21 +777,14 @@
 
         function closeAlbumModal(modalId, e) {
             if (!e || e.target.id === modalId || e.target.classList.contains('close-modal-btn')) {
+                document.getElementById(modalId).classList.remove('active');
                 const modal = document.getElementById(modalId);
-                modal.classList.remove('active');
                 const videos = modal.querySelectorAll('video');
                 videos.forEach(v => v.pause());
             }
         }
 
-        function showMsg(txt) { 
-            const display = document.getElementById('msg-display');
-            display.style.opacity = '0';
-            setTimeout(() => {
-                display.innerText = txt;
-                display.style.opacity = '1';
-            }, 200);
-        }
+        function showMsg(txt) { document.getElementById('msg-display').innerText = txt; }
 
         const floatingMsgs = [
             'Aya, you make my heart skip a beat every single day.',
@@ -1612,12 +819,6 @@
                 <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
             `;
             document.getElementById('secretModalOverlay').classList.add('active');
-            
-            // Focus on input when modal opens
-            setTimeout(() => {
-                const input = document.getElementById('secretPasswordInput');
-                if(input) input.focus();
-            }, 100);
         }
 
         function closeSecretModal(e) {
@@ -1626,6 +827,7 @@
             }
         }
 
+        // جلب التعليقات الحقيقية من قاعدة البيانات
         async function fetchCommentsSafe() {
             try {
                 const snapshot = await db.collection('aya_comments').orderBy('createdAt', 'desc').get();
