@@ -6,7 +6,6 @@
     <meta name="theme-color" content="#020202">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="./manifest.json">
     <title>For Aya & Our Eternal Love</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
@@ -214,66 +213,20 @@
         
         .gallery-item { display: flex; flex-direction: column; align-items: center; gap: 15px; width: fit-content; max-width: 320px; background: rgba(24, 6, 18, 0.6); border: 2px solid #ff4d94; border-radius: 20px; padding: 12px; margin: 0 auto; }
         
-        .modal-media { 
-            width: 100%; 
-            height: auto; 
-            max-height: 450px;
-            border-radius: 12px; 
-            background: transparent; 
-            display: block; 
-            margin: 0 auto; 
-        }
+        .modal-media { width: 100%; height: auto; max-height: 450px; border-radius: 12px; background: transparent; display: block; margin: 0 auto; }
 
-        .gallery-item.video-item {
-            width: fit-content;
-            max-width: 320px;
-        }
-        .gallery-item.video-item .modal-media {
-            height: auto;
-            width: 100%;
-            max-height: 480px;
-            background: transparent;
-        }
+        .gallery-item.video-item { width: fit-content; max-width: 320px; }
+        .gallery-item.video-item .modal-media { height: auto; width: 100%; max-height: 480px; background: transparent; }
 
-        .image-dock {
-            background: rgba(24, 6, 18, 0.9);
-            border: 1px solid #ff4d94;
-            padding: 10px 22px;
-            border-radius: 15px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-        .image-dock p { 
-            font-family: 'Playfair Display', serif; 
-            color: #ffd1dc; 
-            font-size: 1.1rem; 
-            margin: 0; 
-            font-style: italic;
-        }
+        .image-dock { background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; padding: 10px 22px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; width: 100%; }
+        .image-dock p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.1rem; margin: 0; font-style: italic; }
 
         .msg-btn { background: rgba(24, 6, 18, 0.9); color: #fff; border: 1px solid #ff4d94; padding: 14px 28px; margin: 8px; border-radius: 20px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.1rem; transition: background 0.2s; }
         .msg-btn:hover { background: #ff4d94; }
         #msg-display { margin-top: 20px; font-size: 1.35rem; color: #ffd1dc; font-style: italic; font-family: 'Playfair Display', serif; padding: 0 10px; min-height: 40px; }
 
         .floating-container { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 998; align-items: flex-end; }
-        .floating-bubble { 
-            background: rgba(18, 4, 12, 0.85); 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1.5px solid #ff4d94; 
-            color: #fff; 
-            padding: 14px 24px; 
-            border-radius: 25px; 
-            cursor: pointer; 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.05rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+        .floating-bubble { background: rgba(18, 4, 12, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1.5px solid #ff4d94; color: #fff; padding: 14px 24px; border-radius: 25px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .music-bubble { border-color: #a855f7; }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 10000; display: none; }
@@ -290,33 +243,20 @@
             max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .secret-modal-card::-webkit-scrollbar,
-        .album-modal-card::-webkit-scrollbar {
-            width: 6px;
-        }
-        .secret-modal-card::-webkit-scrollbar-thumb,
-        .album-modal-card::-webkit-scrollbar-thumb {
-            background: #ff4d94;
-            border-radius: 10px;
-        }
-
-        .secret-modal-card h3 {
-            font-family: 'Great Vibes', cursive;
-            color: #ff4d94;
-            font-size: 3.2rem;
-            margin-bottom: 18px;
-            line-height: 1.2;
             text-align: center;
         }
 
+        .secret-modal-card::-webkit-scrollbar,
+        .album-modal-card::-webkit-scrollbar { width: 6px; }
+        .secret-modal-card::-webkit-scrollbar-thumb,
+        .album-modal-card::-webkit-scrollbar-thumb { background: #ff4d94; border-radius: 10px; }
+
+        .secret-modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; }
         .modal-card h3 { font-family: 'Great Vibes', cursive; color: #ff4d94; font-size: 3.2rem; margin-bottom: 18px; line-height: 1.2; }
         .modal-card p { font-family: 'Playfair Display', serif; color: #ffd1dc; font-size: 1.25rem; line-height: 1.7; margin-bottom: 25px; }
         
-        .close-modal-btn { background: #ff4d94; color: #fff; border: none; padding: 12px 38px; font-family: 'Playfair Display', serif; font-size: 1.1rem; border-radius: 20px; cursor: pointer; }
+        .close-modal-btn { background: #ff4d94; color: #fff; border: none; padding: 12px 38px; font-family: 'Playfair Display', serif; font-size: 1.1rem; border-radius: 20px; cursor: pointer; transition: 0.2s; }
+        .close-modal-btn:hover { background: #e03b80; }
 
         .music-card-modal { border-color: #a855f7; background: #12040c; text-align: center; }
         .music-card-modal h3 { color: #d8b4fe; font-size: 3.4rem; }
@@ -326,45 +266,25 @@
         .sound-waves { display: flex; gap: 3.5px; align-items: flex-end; height: 16px; }
         .wave-bar { width: 3.5px; background: #a855f7; border-radius: 3px; }
 
-        .secret-input {
-            width: 100%;
-            background: rgba(24, 6, 18, 0.9);
-            border: 1px solid #ff4d94;
-            padding: 14px 20px;
-            border-radius: 20px;
-            color: #fff;
-            font-size: 1.1rem;
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            outline: none;
-            margin-bottom: 20px;
-        }
-        .secret-error-text {
-            color: #ff6b81;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            margin-bottom: 20px;
-            font-style: italic;
-            text-align: center;
-        }
+        .secret-input { width: 100%; background: rgba(24, 6, 18, 0.9); border: 1px solid #ff4d94; padding: 14px 20px; border-radius: 20px; color: #fff; font-size: 1.1rem; font-family: 'Playfair Display', serif; text-align: center; outline: none; margin-bottom: 20px; }
+        .secret-error-text { color: #ff6b81; font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 20px; font-style: italic; }
+        
+        /* The special Arabic message box */
         .secret-success-text {
             color: #ffd1dc;
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
-            line-height: 2;
+            line-height: 1.9;
             margin-bottom: 25px;
             text-align: right;
             direction: rtl;
-            max-height: 250px;
-            overflow-y: auto;
-            padding-left: 10px;
+            padding: 15px;
+            background: rgba(24, 6, 18, 0.6);
+            border-radius: 15px;
+            border-right: 3px solid #ff4d94;
         }
         
-        .comment-box-container {
-            margin-top: 15px;
-            border-top: 1px solid rgba(255, 77, 148, 0.4);
-            padding-top: 15px;
-        }
+        .comment-box-container { margin-top: 15px; border-top: 1px solid rgba(255, 77, 148, 0.4); padding-top: 20px; }
         .comment-input {
             width: 100%;
             background: rgba(24, 6, 18, 0.9);
@@ -378,8 +298,8 @@
             resize: none;
             height: 90px;
             margin-bottom: 12px;
-            direction: rtl;
         }
+        
         .comment-submit-btn {
             background: #ff4d94;
             color: #fff;
@@ -389,7 +309,10 @@
             font-size: 1rem;
             border-radius: 15px;
             cursor: pointer;
+            transition: 0.2s;
         }
+        .comment-submit-btn:disabled { background: #888; cursor: not-allowed; }
+        
         .saved-comment-display {
             background: rgba(24, 6, 18, 0.9);
             border: 1px solid #ff4d94;
@@ -399,82 +322,27 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
             margin-top: 12px;
-            text-align: right;
-            direction: rtl;
+            text-align: left;
             font-style: italic;
-            max-height: 150px;
-            overflow-y: auto;
             word-break: break-word;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
+        
+        .delete-btn { background: #ff4d94; color: #fff; border: none; padding: 6px 14px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; transition: 0.2s; }
+        .delete-btn:hover { background: #e03b80; }
 
-        .wish-tree-container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            margin: 20px auto 0 auto;
-            background: rgba(12, 2, 8, 0.6);
-            border: 1px solid rgba(255, 77, 148, 0.4);
-            border-radius: 20px;
-            padding: 15px;
-            overflow: hidden;
-        }
-
-        .wish-tree-svg {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-            display: block;
-        }
-
-        .tree-hint {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: #ffd1dc;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .tree-heart-item {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ff4d94;
-            transform: translate(-50%, -50%) scale(0);
-            animation: popHeart 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            box-shadow: 0 0 12px #ff4d94, 0 0 20px #ff8fa3;
-        }
-
-        .tree-heart-item::before,
-        .tree-heart-item::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ff4d94;
-            border-radius: 50%;
-        }
-
-        .tree-heart-item::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .tree-heart-item::after {
-            top: 0;
-            left: -10px;
-        }
-
-        @keyframes popHeart {
-            to {
-                transform: translate(-50%, -50%) scale(1) rotate(-45deg);
-            }
-        }
+        .wish-tree-container { position: relative; width: 100%; max-width: 450px; margin: 20px auto 0 auto; background: rgba(12, 2, 8, 0.6); border: 1px solid rgba(255, 77, 148, 0.4); border-radius: 20px; padding: 15px; overflow: hidden; }
+        .wish-tree-svg { width: 100%; height: auto; cursor: pointer; display: block; }
+        .tree-hint { font-family: 'Playfair Display', serif; font-style: italic; color: #ffd1dc; font-size: 0.95rem; margin-top: 10px; opacity: 0.8; }
+        
+        .tree-heart-item { position: absolute; width: 20px; height: 20px; background: #ff4d94; transform: translate(-50%, -50%) scale(0); animation: popHeart 0.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; box-shadow: 0 0 12px #ff4d94, 0 0 20px #ff8fa3; }
+        .tree-heart-item::before, .tree-heart-item::after { content: ""; position: absolute; width: 20px; height: 20px; background: #ff4d94; border-radius: 50%; }
+        .tree-heart-item::before { top: -10px; left: 0; }
+        .tree-heart-item::after { top: 0; left: -10px; }
+        @keyframes popHeart { to { transform: translate(-50%, -50%) scale(1) rotate(-45deg); } }
 
         footer { padding: 25px; color: #777; font-family: 'Playfair Display', serif; font-size: 0.8rem; text-align: left; position: relative; z-index: 3; }
     </style>
@@ -622,16 +490,15 @@
         </div>
     </div>
 
+    <!-- Secret Modal -->
     <div class="modal-overlay" id="secretModalOverlay" onclick="closeSecretModal(event)">
         <div class="secret-modal-card" onclick="event.stopPropagation()">
             <h3>Secret for Aya</h3>
             <div id="secret-content-area">
-                <p style="font-size: 1.15rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: #ffd1dc; text-align: center;">Enter your password to unlock this very special message:</p>
+                <p style="font-size: 1.15rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: #ffd1dc;">Enter your password to unlock this very special message:</p>
                 <input type="password" id="secretPasswordInput" class="secret-input" placeholder="Enter password here..." autocomplete="new-password">
                 <div id="secretErrorBox"></div>
-                <div style="text-align: center;">
-                    <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
-                </div>
+                <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
             </div>
         </div>
     </div>
@@ -800,8 +667,12 @@
             messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
             appId: "YOUR_APP_ID"
         };
+        
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+
+        // نظام ذكي لاكتشاف ما إذا كنت قد قمت بتفعيل Firebase أم لا لتجنب تعليق الزر
+        const isFirebaseReady = firebaseConfig.projectId !== "YOUR_PROJECT_ID";
 
         const canvas = document.getElementById('constellation-canvas');
         const ctx = canvas.getContext('2d');
@@ -940,12 +811,10 @@
         function openSecretModal() {
             const contentArea = document.getElementById('secret-content-area');
             contentArea.innerHTML = `
-                <p style="font-size: 1.15rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: #ffd1dc; text-align: center;">Enter your password to unlock this very special message:</p>
+                <p style="font-size: 1.15rem; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: #ffd1dc;">Enter your password to unlock this very special message:</p>
                 <input type="password" id="secretPasswordInput" class="secret-input" placeholder="Enter password here..." autocomplete="new-password">
                 <div id="secretErrorBox"></div>
-                <div style="text-align: center;">
-                    <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
-                </div>
+                <button class="close-modal-btn" onclick="checkSecretPassword()">Open Message</button>
             `;
             document.getElementById('secretModalOverlay').classList.add('active');
         }
@@ -956,19 +825,23 @@
             }
         }
 
-        // جلب التعليقات من Firebase مع أ IDs الخاصة بها
-        async function fetchCommentsFromFirebase() {
+        // جلب التعليقات بطريقة آمنة لتجنب التجميد
+        async function fetchCommentsSafe() {
+            if (!isFirebaseReady) {
+                // العمل بنظام الحفظ المحلي فوراً إذا لم تكن قاعدة البيانات مربوطة
+                const localId = localStorage.getItem('my_aya_comment_id');
+                const localText = localStorage.getItem('aya_secret_comment');
+                return localId && localText ? [{ id: localId, text: localText }] : [];
+            }
             try {
                 const snapshot = await db.collection('aya_comments').orderBy('createdAt', 'desc').get();
                 let comments = [];
                 snapshot.forEach(doc => {
-                    if (doc.data().text) {
-                        comments.push({ id: doc.id, text: doc.data().text });
-                    }
+                    if (doc.data().text) comments.push({ id: doc.id, text: doc.data().text });
                 });
                 return comments;
             } catch (err) {
-                console.log("Error fetching from Firebase:", err);
+                console.log("Firebase not setup yet, using local storage.");
                 const localId = localStorage.getItem('my_aya_comment_id');
                 const localText = localStorage.getItem('aya_secret_comment');
                 return localId && localText ? [{ id: localId, text: localText }] : [];
@@ -979,9 +852,12 @@
             const passInput = document.getElementById('secretPasswordInput');
             const errorBox = document.getElementById('secretErrorBox');
             const contentArea = document.getElementById('secret-content-area');
+            
+            // نأخذ قيمة الباسورد من الإدخال إذا وجد، أو نفترضه صحيحاً إذا تم الاستدعاء لتحديث الواجهة
+            const isAuthorized = (passInput && passInput.value === 'Aya05') || !passInput;
 
-            if (passInput.value === 'Aya05') {
-                const comments = await fetchCommentsFromFirebase();
+            if (isAuthorized) {
+                const comments = await fetchCommentsSafe();
                 const myCommentId = localStorage.getItem('my_aya_comment_id');
                 const hasAlreadyCommented = myCommentId !== null;
                 
@@ -989,16 +865,16 @@
                 
                 if (!hasAlreadyCommented) {
                     commentSectionHTML += `
-                        <p style="font-family: 'Playfair Display', serif; color: #ff8fa3; font-size: 1.05rem; margin-bottom: 8px; text-align: right;">اكتب تعليقك:</p>
-                        <textarea id="ayaCommentInput" class="comment-input" placeholder="اكتب تعليقك أو مشاعرك هنا..."></textarea>
-                        <div style="text-align: left; margin-bottom: 15px;">
-                            <button class="comment-submit-btn" onclick="saveAyaComment()">إرسال التعليق</button>
+                        <p style="font-family: 'Playfair Display', serif; color: #ff8fa3; font-size: 1.05rem; margin-bottom: 10px; text-align: left;">Leave a sweet note:</p>
+                        <textarea id="ayaCommentInput" class="comment-input" dir="auto" placeholder="Write your message here..."></textarea>
+                        <div style="text-align: left; margin-bottom: 20px;">
+                            <button class="comment-submit-btn" onclick="saveAyaComment(this)">Send Comment</button>
                         </div>
                     `;
                 } else {
                     commentSectionHTML += `
-                        <div style="color: #ffd1dc; font-size: 0.95rem; text-align: right; margin-bottom: 15px; font-style: italic;">
-                            لقد قمت بكتابة تعليق بالفعل. يمكنك حذفه إذا كنت تريد كتابة تعليق جديد.
+                        <div style="color: #ffd1dc; font-size: 0.95rem; margin-bottom: 20px; font-style: italic; text-align: center;">
+                            You've already left a beautiful note. You can delete it to write a new one.
                         </div>
                     `;
                 }
@@ -1009,77 +885,84 @@
                     comments.forEach(c => {
                         const isMine = (c.id === myCommentId);
                         commentSectionHTML += `
-                            <div class="saved-comment-display">
-                                <span style="word-break: break-word; text-align: right; flex: 1;">"${c.text}"</span>
-                                ${isMine ? `<button onclick="deleteAyaComment('${c.id}')" style="background: #ff4d94; color: #fff; border: none; padding: 6px 14px; border-radius: 12px; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 0.85rem; white-space: nowrap;">حذف</button>` : ''}
+                            <div class="saved-comment-display" dir="auto">
+                                <span style="flex: 1;">"${c.text}"</span>
+                                ${isMine ? `<button class="delete-btn" onclick="deleteAyaComment('${c.id}', this)">Delete</button>` : ''}
                             </div>
                         `;
                     });
                 } else {
-                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: right; font-style: italic;" id="noCommentsYet">لا توجد تعليقات بعد. كن أول من يكتب تعليقاً!</div>`;
+                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: center; font-style: italic;" id="noCommentsYet">No comments yet. Be the first to write one!</div>`;
                 }
 
                 commentSectionHTML += `</div></div>`;
 
                 contentArea.innerHTML = `
                     <div class="secret-success-text">
-                        آية حبيبتي وزوجتي ونور عيني الموقع ده لينا احنا ذكرة حلوة بينا انتِ اغلي حد في حياتي واحسن حد فيها، فرحتك من فرحتي وحزنك يوجعني الله يديم الود والمحبة بينا انتِ نعمة كبيرة اوي ربنا ادهاني دايما جنبي ومعايا الدنيا كلها ماتكفيكي عندي، انتِ البنت الي نفسي اكمل حياتي معاها ولو محصلش نصيب انتِ حبي الأول والأخير صدق ربنا يرزقني بواحدة زيك ويرزقك بأبن الحلال يارب، بحبك ياروح قلبي ♥️💋🫂
+                        آية حبيبتي وزوجتي ونور عيني، الموقع ده لينا احنا ذكرى حلوة بينا، انتِ أغلى حد في حياتي وأحسن حد فيها، فرحتك من فرحتي وحزنك يوجعني، الله يديم الود والمحبة بينا، انتِ نعمة كبيرة أوي ربنا ادهاني دايما جنبي ومعايا الدنيا كلها ماتكفيكي عندي، انتِ البنت الي نفسي أكمل حياتي معاها ولو محصلش نصيب انتِ حبي الأول والأخير صدق ربنا يرزقني بواحدة زيك ويرزقك بابن الحلال يارب، بحبك ياروح قلبي ♥️💋🫂
                     </div>
                     ${commentSectionHTML}
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button class="close-modal-btn" onclick="closeSecretModal()">Close</button>
+                    <div style="text-align: center; margin-top: 25px;">
+                        <button class="close-modal-btn" onclick="closeSecretModal()">Close Window</button>
                     </div>
                 `;
-            } else {
-                errorBox.innerHTML = `<div class="secret-error-text">You are not Aya</div>`;
+            } else if (passInput) {
+                errorBox.innerHTML = `<div class="secret-error-text">Incorrect password. Only for Aya.</div>`;
                 passInput.value = '';
                 passInput.focus();
             }
         }
 
-        async function saveAyaComment() {
+        async function saveAyaComment(btn) {
             const commentInput = document.getElementById('ayaCommentInput');
             if (commentInput && commentInput.value.trim() !== '') {
                 const text = commentInput.value.trim();
                 
-                try {
-                    // حفظ في Firebase وجلب الـ ID الخاص بالتعليق
-                    const docRef = await db.collection('aya_comments').add({
-                        text: text,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-
-                    localStorage.setItem('my_aya_comment_id', docRef.id);
-                    localStorage.setItem('aya_secret_comment', text);
-
-                    // تحديث محتوى النافذة فوراً ليعرض زر الحذف ويمنع كتابة تعليق آخر
-                    checkSecretPassword();
-                } catch(e) {
-                    console.log("Error saving to Firebase:", e);
-                    const fakeId = 'local_' + Date.now();
-                    localStorage.setItem('my_aya_comment_id', fakeId);
-                    localStorage.setItem('aya_secret_comment', text);
-                    checkSecretPassword();
+                // إضافة تأثير التحميل لمنع المستخدم من الضغط مرتين وإعلامه بأن الأمر قيد التنفيذ
+                btn.innerText = 'Sending...';
+                btn.disabled = true;
+                
+                if (isFirebaseReady) {
+                    try {
+                        const docRef = await db.collection('aya_comments').add({
+                            text: text,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                        localStorage.setItem('my_aya_comment_id', docRef.id);
+                        localStorage.setItem('aya_secret_comment', text);
+                    } catch(e) {
+                        console.log("Error saving to Firebase:", e);
+                        saveLocallyFallback(text);
+                    }
+                } else {
+                    saveLocallyFallback(text);
                 }
+                
+                // تحديث الواجهة فوراً
+                checkSecretPassword();
             }
         }
 
-        async function deleteAyaComment(id) {
-            try {
-                if (!id.startsWith('local_')) {
+        function saveLocallyFallback(text) {
+            const fakeId = 'local_' + Date.now();
+            localStorage.setItem('my_aya_comment_id', fakeId);
+            localStorage.setItem('aya_secret_comment', text);
+        }
+
+        async function deleteAyaComment(id, btn) {
+            btn.innerText = '...';
+            btn.disabled = true;
+
+            if (isFirebaseReady && !id.startsWith('local_')) {
+                try {
                     await db.collection('aya_comments').doc(id).delete();
-                }
-                localStorage.removeItem('my_aya_comment_id');
-                localStorage.removeItem('aya_secret_comment');
-                
-                // تحديث النافذة ليعود مربع الكتابة وتتمكن من كتابة تعليق جديد
-                checkSecretPassword();
-            } catch(e) {
-                console.log("Error deleting from Firebase:", e);
-                localStorage.removeItem('my_aya_comment_id');
-                localStorage.removeItem('aya_secret_comment');
-                checkSecretPassword();
+                } catch(e) { console.log("Error deleting from Firebase:", e); }
             }
+            
+            localStorage.removeItem('my_aya_comment_id');
+            localStorage.removeItem('aya_secret_comment');
+            
+            checkSecretPassword();
         }
 
         function plantHeart(event) {
