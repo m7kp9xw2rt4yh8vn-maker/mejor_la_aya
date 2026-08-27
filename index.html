@@ -281,7 +281,6 @@
         
         .modal-card { background: #12040c; border: 1.5px solid #ff4d94; padding: 40px 30px; border-radius: 25px; width: 90%; max-width: 440px; text-align: center; }
         
-        /* تنسيق نافذة السر مع التمرير (Scroll) */
         .secret-modal-card {
             background: #12040c;
             border: 1.5px solid #ff4d94;
@@ -953,13 +952,15 @@
             }
         }
 
-        // جلب التعليقات مباشرة من Firebase Firestore سحابياً
+        // جلب التعليقات سحابياً من Firebase Firestore مع دعم التخزين المحلي كبديل
         async function fetchCommentsFromFirebase() {
             try {
                 const snapshot = await db.collection('aya_comments').orderBy('createdAt', 'desc').get();
                 let comments = [];
                 snapshot.forEach(doc => {
-                    comments.push(doc.data().text);
+                    if (doc.data().text) {
+                        comments.push(doc.data().text);
+                    }
                 });
                 return comments;
             } catch (err) {
@@ -992,7 +993,7 @@
                         commentSectionHTML += `<div class="saved-comment-display">"${c}"</div>`;
                     });
                 } else {
-                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: right; font-style: italic;">No comments yet. Be the first to write one!</div>`;
+                    commentSectionHTML += `<div style="color: #ffd1dc; font-size: 0.9rem; text-align: right; font-style: italic;" id="noCommentsYet">No comments yet. Be the first to write one!</div>`;
                 }
 
                 commentSectionHTML += `</div></div>`;
@@ -1018,27 +1019,35 @@
             if (commentInput && commentInput.value.trim() !== '') {
                 const text = commentInput.value.trim();
                 
-                // حفظ محلي احتياطي
+                // حفظ محلي احتياطي فوري
                 localStorage.setItem('aya_secret_comment', text);
+
+                // إظهار التعليق في الواجهة فوراً للمستخدم لضمان الاستجابة السريعة
+                const listDisplay = document.getElementById('commentsListDisplay');
+                const noCommentsMsg = document.getElementById('noCommentsYet');
+                if (noCommentsMsg) {
+                    noCommentsMsg.remove();
+                }
+
+                const newDiv = document.createElement('div');
+                newDiv.className = 'saved-comment-display';
+                newDiv.innerText = `"${text}"`;
+                if (listDisplay) {
+                    listDisplay.prepend(newDiv);
+                }
                 
-                // حفظ سحابياً في Firebase Firestore
+                const commentTextToSend = text;
+                commentInput.value = '';
+
+                // حفظ سحابياً في Firebase Firestore لكي يراه أي شخص يدخل بكلمة المرور
                 try {
                     await db.collection('aya_comments').add({
-                        text: text,
+                        text: commentTextToSend,
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
                 } catch(e) {
                     console.log("Error saving to Firebase:", e);
                 }
-
-                const listDisplay = document.getElementById('commentsListDisplay');
-                if (listDisplay) {
-                    const newDiv = document.createElement('div');
-                    newDiv.className = 'saved-comment-display';
-                    newDiv.innerText = `"${text}"`;
-                    listDisplay.prepend(newDiv);
-                }
-                commentInput.value = '';
             }
         }
 
